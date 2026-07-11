@@ -16,6 +16,7 @@
 
         body {
             min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -23,7 +24,7 @@
             font-family: 'Quicksand', sans-serif;
             padding: 25px;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         /* === HIỆU ỨNG NỀN === */
@@ -116,23 +117,25 @@
             }
         }
 
-        /* === OVERLAY BỊT KÍN (phong bì) === */
+        /* === PHONG BÌ + HIỆU ỨNG MỞ THƯ === */
         .envelope-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(30, 60, 50, 0.6);
-            backdrop-filter: blur(8px);
+            height: 100dvh;
+            background: rgba(20, 50, 40, 0.7);
+            backdrop-filter: blur(12px);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1000;
             cursor: pointer;
-            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             opacity: 1;
             visibility: visible;
+            overflow: hidden;
         }
 
         .envelope-overlay.hidden {
@@ -141,88 +144,169 @@
             pointer-events: none;
         }
 
-        .envelope-box {
-            background: #e8f6f1;
-            padding: 50px 60px 40px;
-            border-radius: 40px;
-            text-align: center;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            animation: envelopeFloat 3s ease-in-out infinite;
-            max-width: 500px;
-            width: 90%;
+        .envelope-container {
             position: relative;
+            width: 480px;
+            max-width: 92vw;
+            cursor: pointer;
             transform: scale(1);
-            transition: transform 0.3s;
+            transition: transform 0.4s ease;
         }
 
-        .envelope-box:hover {
+        .envelope-container:hover {
             transform: scale(1.02);
         }
 
-        @keyframes envelopeFloat {
+        /* Bì thư */
+        .envelope {
+            position: relative;
+            background: #e8f1eb;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+            padding: 30px 35px 25px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Nắp thư (gấp xuống) */
+        .envelope-flap {
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            height: 120px;
+            background: linear-gradient(180deg, #dcebe3 0%, #e8f1eb 100%);
+            border-radius: 12px 12px 0 0;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-bottom: none;
+            transform-origin: bottom;
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 2;
+        }
+
+        .envelope-flap::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 30px;
+            background: radial-gradient(ellipse at center, rgba(180, 200, 190, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .envelope-flap.open {
+            transform: rotateX(180deg);
+            box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Tem thư */
+        .envelope-stamp {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2.8rem;
+            transform: rotate(12deg);
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+            z-index: 3;
+            animation: stampWiggle 2.5s ease-in-out infinite;
+        }
+
+        @keyframes stampWiggle {
+            0%, 100% { transform: rotate(12deg) scale(1); }
+            50% { transform: rotate(8deg) scale(1.05); }
+        }
+
+        /* Nội dung trên bì thư */
+        .envelope-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .envelope-content .envelope-icon {
+            font-size: 4.5rem;
+            display: block;
+            margin-bottom: 12px;
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes iconFloat {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
         }
 
-        .envelope-box .envelope-icon {
-            font-size: 5rem;
-            margin-bottom: 15px;
-            display: block;
-            animation: envelopeWiggle 2s ease-in-out infinite;
-        }
-
-        @keyframes envelopeWiggle {
-            0%, 100% { transform: rotate(-5deg); }
-            50% { transform: rotate(5deg); }
-        }
-
-        .envelope-box h2 {
+        .envelope-content h2 {
             font-family: 'Dancing Script', cursive;
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             color: #1a4d3e;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
-        .envelope-box p {
+        .envelope-content p {
             font-size: 1.1rem;
             color: #2d6b55;
-            margin-bottom: 20px;
-            line-height: 1.6;
+            margin-bottom: 18px;
+            opacity: 0.8;
         }
 
-        .envelope-box .open-hint {
+        .envelope-content .open-hint {
             display: inline-block;
             background: linear-gradient(135deg, #6ba18b, #4d8a73);
             color: white;
-            padding: 12px 35px;
+            padding: 14px 40px;
             border-radius: 60px;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.05rem;
             border: none;
             cursor: pointer;
             transition: 0.3s;
-            box-shadow: 0 6px 20px rgba(70, 130, 110, 0.3);
+            box-shadow: 0 6px 24px rgba(70, 130, 110, 0.3);
             font-family: 'Quicksand', sans-serif;
+            position: relative;
+            overflow: hidden;
         }
 
-        .envelope-box .open-hint:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(70, 130, 110, 0.4);
+        .envelope-content .open-hint::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+            animation: shimmer 3s infinite;
         }
 
-        .envelope-box .open-hint i {
+        @keyframes shimmer {
+            0% { transform: translate(-30%, -30%) rotate(0deg); }
+            100% { transform: translate(30%, 30%) rotate(360deg); }
+        }
+
+        .envelope-content .open-hint:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 35px rgba(70, 130, 110, 0.4);
+        }
+
+        .envelope-content .open-hint i {
             margin-right: 10px;
         }
 
-        .envelope-box .sub-text {
+        .envelope-content .sub-text {
             font-size: 0.85rem;
             color: #3d7a66;
-            opacity: 0.7;
-            margin-top: 12px;
+            opacity: 0.6;
+            margin-top: 14px;
+            letter-spacing: 1px;
         }
 
-        /* === LÁ THƯ === */
+        /* === LÁ THƯ BÊN TRONG === */
         .letter-wrapper {
             max-width: 780px;
             width: 100%;
@@ -239,15 +323,33 @@
             position: relative;
             border: 1px solid rgba(255, 255, 255, 0.5);
             z-index: 1;
-            transform: scale(0.8) translateY(40px);
+            transform: scale(0.7) translateY(60px) rotate(-3deg);
             opacity: 0;
-            transition: all 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
-            transition-delay: 0.2s;
+            transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition-delay: 0.3s;
+            max-height: 90vh;
+            overflow-y: auto;
+            scroll-behavior: smooth;
         }
 
         .letter-wrapper.visible {
-            transform: scale(1) translateY(0);
+            transform: scale(1) translateY(0) rotate(0deg);
             opacity: 1;
+        }
+
+        /* Scrollbar đẹp */
+        .letter-wrapper::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .letter-wrapper::-webkit-scrollbar-track {
+            background: rgba(180, 210, 195, 0.2);
+            border-radius: 10px;
+        }
+
+        .letter-wrapper::-webkit-scrollbar-thumb {
+            background: #6ba18b;
+            border-radius: 10px;
         }
 
         .letter-wrapper::before {
@@ -279,6 +381,7 @@
             50% { transform: rotate(8deg) scale(1.1); }
         }
 
+        /* Header */
         .letter-header {
             display: flex;
             flex-wrap: wrap;
@@ -375,6 +478,7 @@
             color: #7a4a3a;
         }
 
+        /* Nội dung thư */
         .letter-body {
             background: rgba(255, 252, 245, 0.65);
             backdrop-filter: blur(4px);
@@ -417,7 +521,7 @@
 
         .letter-body .greeting-line {
             font-family: 'Dancing Script', cursive;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: #1f604a;
             margin-bottom: 12px;
@@ -472,7 +576,7 @@
 
         .letter-body .soc-collection .soc-icon {
             transition: 0.3s;
-            cursor: default;
+            cursor: pointer;
             filter: drop-shadow(0 4px 8px rgba(50, 80, 60, 0.1));
         }
 
@@ -488,6 +592,7 @@
             border-radius: 60px;
             border: 1px solid rgba(255, 255, 255, 0.5);
             animation: socBounce 2s ease-in-out infinite;
+            cursor: pointer;
         }
 
         @keyframes socBounce {
@@ -497,13 +602,14 @@
 
         .letter-body .closing-line {
             font-family: 'Dancing Script', cursive;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             text-align: right;
             margin-top: 20px;
             color: #1f604a;
             padding-right: 10px;
         }
 
+        /* Footer */
         .letter-footer {
             display: flex;
             justify-content: space-between;
@@ -516,7 +622,7 @@
 
         .letter-footer .signature {
             font-family: 'Dancing Script', cursive;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: #1b4e3d;
             background: rgba(255, 255, 240, 0.6);
@@ -567,6 +673,7 @@
         @media (max-width: 640px) {
             .letter-wrapper {
                 padding: 22px 18px 25px;
+                max-height: 85vh;
             }
 
             .letter-header {
@@ -606,7 +713,7 @@
             }
 
             .letter-body .greeting-line {
-                font-size: 1.3rem;
+                font-size: 1.5rem;
             }
 
             .letter-body .highlight-quote {
@@ -625,7 +732,7 @@
             }
 
             .letter-body .closing-line {
-                font-size: 1.3rem;
+                font-size: 1.4rem;
             }
 
             .letter-footer {
@@ -635,7 +742,7 @@
             }
 
             .letter-footer .signature {
-                font-size: 1.3rem;
+                font-size: 1.4rem;
             }
 
             .letter-stamp {
@@ -644,22 +751,39 @@
                 top: -10px;
             }
 
-            .envelope-box {
-                padding: 35px 25px 30px;
+            .envelope {
+                padding: 25px 20px 20px;
+                min-height: 260px;
             }
 
-            .envelope-box h2 {
+            .envelope-content .envelope-icon {
+                font-size: 3.5rem;
+            }
+
+            .envelope-content h2 {
                 font-size: 1.8rem;
             }
 
-            .envelope-box .envelope-icon {
-                font-size: 4rem;
+            .envelope-content .open-hint {
+                padding: 12px 28px;
+                font-size: 0.95rem;
+            }
+
+            .envelope-flap {
+                height: 90px;
+            }
+
+            .envelope-stamp {
+                font-size: 2.2rem;
+                top: 15px;
+                right: 18px;
             }
         }
 
         @media (max-width: 420px) {
             .letter-wrapper {
                 padding: 18px 12px 20px;
+                max-height: 80vh;
             }
 
             .avatar-frame {
@@ -689,61 +813,27 @@
                 font-size: 1.7rem;
             }
 
-            .envelope-box {
-                padding: 25px 18px 22px;
+            .envelope {
+                padding: 20px 15px 15px;
+                min-height: 220px;
             }
 
-            .envelope-box h2 {
+            .envelope-content .envelope-icon {
+                font-size: 2.8rem;
+            }
+
+            .envelope-content h2 {
                 font-size: 1.5rem;
             }
 
-            .envelope-box .envelope-icon {
-                font-size: 3.2rem;
+            .envelope-content .open-hint {
+                padding: 10px 20px;
+                font-size: 0.85rem;
             }
 
-            .envelope-box .open-hint {
-                padding: 10px 25px;
-                font-size: 0.9rem;
+            .envelope-flap {
+                height: 70px;
             }
-        }
-
-        /* === NÚT BẬT/TẮT HIỆU ỨNG === */
-        .toggle-effects {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            z-index: 10;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 50px;
-            padding: 10px 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #1d5f4a;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-            font-family: 'Quicksand', sans-serif;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            opacity: 0;
-            transition: all 0.5s ease;
-        }
-
-        .toggle-effects.show {
-            opacity: 1;
-        }
-
-        .toggle-effects:hover {
-            background: rgba(255, 255, 255, 0.9);
-            transform: scale(1.05);
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
-        }
-
-        .toggle-effects i {
-            font-size: 1.1rem;
         }
     </style>
 </head>
@@ -784,14 +874,23 @@
 
     <!-- === PHONG BÌ (OVERLAY) === -->
     <div class="envelope-overlay" id="envelopeOverlay">
-        <div class="envelope-box">
-            <span class="envelope-icon">💌</span>
-            <h2>Một lá thư đang chờ em</h2>
-            <p>Gửi Phúc Đoan — nhân ngày sinh nhật của em</p>
-            <button class="open-hint" id="openLetterBtn">
-                <i class="fas fa-envelope-open-text"></i> Mở thư
-            </button>
-            <div class="sub-text">Chạm vào đây để cảm nhận những lời chúc</div>
+        <div class="envelope-container" id="envelopeContainer">
+            <div class="envelope">
+                <!-- Nắp thư -->
+                <div class="envelope-flap" id="envelopeFlap"></div>
+                <!-- Tem -->
+                <div class="envelope-stamp">🎂</div>
+                <!-- Nội dung -->
+                <div class="envelope-content">
+                    <span class="envelope-icon">💌</span>
+                    <h2>Một lá thư đang chờ Đoan</h2>
+                    <p>Nhân ngày sinh nhật của em</p>
+                    <button class="open-hint" id="openLetterBtn">
+                        <i class="fas fa-envelope-open-text"></i> Mở thư
+                    </button>
+                    <div class="sub-text">✨ Chạm vào đây để cảm nhận những lời chúc ✨</div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -824,7 +923,7 @@
             </p>
 
             <p>
-                Chào cậu, hôm nay là 12/7 rồi — sinh nhật của cậu đấy. Chúc mừng cậu nhé!
+                Chào Đoan, hôm nay là 12/7 rồi — sinh nhật của em đấy. Chúc mừng em nhé!
             </p>
 
             <div class="highlight-quote">
@@ -836,16 +935,16 @@
             <div class="message-core">
                 <p style="margin-bottom: 0;">
                     <i class="fas fa-heart" style="color: #c07a8a; margin-right: 8px;"></i>
-                    Tụi mình quen biết nhau qua mạng cũng được một thời gian rồi nhỉ. Tuy chưa một lần gặp mặt ngoài đời, nhưng mình thực sự trân trọng những cuộc trò chuyện và sự kết nối mà tụi mình có. Cậu là một người bạn thú vị và đáng mến.
+                    Anh với em quen biết nhau qua mạng cũng được một thời gian rồi nhỉ. Tuy chưa một lần gặp mặt ngoài đời, nhưng anh thực sự trân trọng những cuộc trò chuyện và sự kết nối mà hai đứa mình có. Em là một người bạn thú vị và đáng mến.
                 </p>
             </div>
 
             <p>
-                Mình mong cậu luôn giữ được sự tươi vui và lạc quan như những gì cậu vẫn thể hiện. Tuổi 17 là khoảng thời gian đẹp để khám phá bản thân và làm những điều cậu thích. Hãy cứ sống theo cách cậu muốn, đừng để ai làm cậu phải thay đổi.
+                Anh mong em luôn giữ được sự tươi vui và lạc quan như những gì em vẫn thể hiện. Tuổi 17 là khoảng thời gian đẹp để khám phá bản thân và làm những điều em thích. Hãy cứ sống theo cách em muốn, đừng để ai làm em phải thay đổi.
             </p>
 
             <p>
-                Chúc cậu có một ngày sinh nhật thật vui vẻ bên gia đình và bạn bè. Chúc cậu luôn khỏe mạnh, học tốt và có thêm thật nhiều kỷ niệm đẹp. Và dù tụi mình có ở xa nhau, mình vẫn luôn ủng hộ và mong những điều tốt đẹp nhất sẽ đến với cậu.
+                Chúc em có một ngày sinh nhật thật vui vẻ bên gia đình và bạn bè. Chúc em luôn khỏe mạnh, học tốt và có thêm thật nhiều kỷ niệm đẹp. Và dù hai đứa có ở xa nhau, anh vẫn luôn ủng hộ và mong những điều tốt đẹp nhất sẽ đến với em.
             </p>
 
             <div class="soc-collection">
@@ -858,12 +957,12 @@
 
             <p style="text-align: center; font-size: 0.95rem; color: #1d5d48; background: rgba(220, 240, 230, 0.3); padding: 6px 12px; border-radius: 40px; display: inline-block; width: auto; margin: 0 auto 10px;">
                 <i class="fas fa-heart" style="color: #c07a8a;"></i> 
-                Sóc nhỏ gửi lời chúc sinh nhật đến cậu 
+                Sóc nhỏ gửi lời chúc sinh nhật đến em 
                 <i class="fas fa-heart" style="color: #c07a8a;"></i>
             </p>
 
             <p style="margin-top: 16px;">
-                Mình không biết tương lai sẽ thế nào, nhưng mình hy vọng tụi mình sẽ tiếp tục giữ liên lạc và chia sẻ những câu chuyện vui trong cuộc sống. Cảm ơn cậu vì đã là một người bạn đáng yêu.
+                Anh không biết tương lai sẽ thế nào, nhưng anh hy vọng hai đứa sẽ tiếp tục giữ liên lạc và chia sẻ những câu chuyện vui trong cuộc sống. Cảm ơn em vì đã là một người bạn đáng yêu.
             </p>
 
             <p class="closing-line">
@@ -883,55 +982,61 @@
         </div>
     </div>
 
-    <!-- Nút bật/tắt hiệu ứng -->
-    <button class="toggle-effects" id="toggleEffects">
-        <i class="fas fa-gift"></i> Hiệu ứng sinh nhật
-    </button>
-
     <script>
         (function() {
             const envelopeOverlay = document.getElementById('envelopeOverlay');
+            const envelopeFlap = document.getElementById('envelopeFlap');
             const letterWrapper = document.getElementById('letterWrapper');
             const openBtn = document.getElementById('openLetterBtn');
-            const toggleBtn = document.getElementById('toggleEffects');
-            const bgEffects = document.getElementById('bgEffects');
-            let effectsVisible = true;
+            const envelopeContainer = document.getElementById('envelopeContainer');
 
-            // Mở thư
+            // Hàm mở thư
             const openLetter = () => {
-                envelopeOverlay.classList.add('hidden');
-                letterWrapper.classList.add('visible');
-                toggleBtn.classList.add('show');
+                // Mở nắp thư
+                envelopeFlap.classList.add('open');
                 
-                // Tạo hiệu ứng rơi giấy khi mở thư
-                for (let i = 0; i < 30; i++) {
-                    setTimeout(() => {
-                        const petal = document.createElement('div');
-                        petal.style.position = 'fixed';
-                        petal.style.pointerEvents = 'none';
-                        petal.style.zIndex = '999';
-                        petal.style.fontSize = (Math.random() * 20 + 15) + 'px';
-                        petal.style.left = (Math.random() * 100) + '%';
-                        petal.style.top = '-30px';
-                        petal.style.opacity = '0';
-                        petal.textContent = ['🌸', '🌺', '✨', '⭐', '💫', '🌷', '🌹', '🎀'][Math.floor(Math.random() * 8)];
-                        petal.style.transition = `all ${Math.random() * 2 + 2}s cubic-bezier(0.34, 1.56, 0.64, 1)`;
-                        document.body.appendChild(petal);
-                        
+                // Sau 0.5s thì ẩn phong bì và hiện thư
+                setTimeout(() => {
+                    envelopeOverlay.classList.add('hidden');
+                    letterWrapper.classList.add('visible');
+                    
+                    // Tạo hiệu ứng rơi hoa/ngôi sao
+                    const emojis = ['🌸', '✨', '⭐', '💫', '🌷', '🌺', '🎀', '🌹', '🌟'];
+                    for (let i = 0; i < 35; i++) {
                         setTimeout(() => {
-                            petal.style.opacity = '1';
-                            petal.style.transform = `translateY(${window.innerHeight + 50}px) rotate(${Math.random() * 720}deg) translateX(${Math.random() * 200 - 100}px)`;
-                        }, 50);
-                        
-                        setTimeout(() => {
-                            petal.remove();
-                        }, 4000);
-                    }, i * 80);
-                }
+                            const petal = document.createElement('div');
+                            petal.style.position = 'fixed';
+                            petal.style.pointerEvents = 'none';
+                            petal.style.zIndex = '999';
+                            petal.style.fontSize = (Math.random() * 22 + 16) + 'px';
+                            petal.style.left = (Math.random() * 100) + '%';
+                            petal.style.top = '-40px';
+                            petal.style.opacity = '0';
+                            petal.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                            petal.style.transition = `all ${Math.random() * 2.5 + 2}s cubic-bezier(0.34, 1.56, 0.64, 1)`;
+                            petal.style.transform = 'rotate(0deg)';
+                            document.body.appendChild(petal);
+                            
+                            setTimeout(() => {
+                                petal.style.opacity = '1';
+                                petal.style.transform = `translateY(${window.innerHeight + 80}px) rotate(${Math.random() * 720}deg) translateX(${Math.random() * 300 - 150}px)`;
+                            }, 30);
+                            
+                            setTimeout(() => {
+                                petal.remove();
+                            }, 4500);
+                        }, i * 70);
+                    }
+                }, 500);
             };
 
             // Sự kiện mở thư
-            openBtn.addEventListener('click', openLetter);
+            openBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openLetter();
+            });
+
+            envelopeContainer.addEventListener('click', openLetter);
             envelopeOverlay.addEventListener('click', (e) => {
                 if (e.target === envelopeOverlay) openLetter();
             });
@@ -941,7 +1046,7 @@
             const socIcons = document.querySelectorAll('.soc-icon');
             
             const showLove = () => {
-                alert('🐿️ Chúc Phúc Đoan sinh nhật vui vẻ! Chúc cậu luôn tươi cười và hạnh phúc nhé! 🎂');
+                alert('🐿️ Chúc Đoan sinh nhật vui vẻ! Chúc em luôn tươi cười và hạnh phúc nhé! 🎂');
             };
 
             if (socEmoji) {
@@ -968,19 +1073,6 @@
                     }, 350);
                 });
             }
-
-            // Bật/tắt hiệu ứng
-            toggleBtn.addEventListener('click', function() {
-                if (effectsVisible) {
-                    bgEffects.style.display = 'none';
-                    this.innerHTML = '<i class="fas fa-gift"></i> Bật hiệu ứng';
-                    effectsVisible = false;
-                } else {
-                    bgEffects.style.display = 'block';
-                    this.innerHTML = '<i class="fas fa-gift"></i> Hiệu ứng sinh nhật';
-                    effectsVisible = true;
-                }
-            });
 
             console.log('🌸 Lá thư sinh nhật dành tặng Phúc Đoan từ schoo2k3 🌸');
         })();
