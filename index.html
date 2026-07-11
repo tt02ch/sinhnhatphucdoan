@@ -23,28 +23,100 @@
             font-family: 'Quicksand', sans-serif;
             padding: 25px;
             position: relative;
+            overflow-x: hidden;
         }
 
-        body::before {
-            content: '🌸';
+        /* === HIỆU ỨNG SINH NHẬT: BONG BÓNG + PHÁO HOA === */
+        .birthday-effects {
             position: fixed;
-            font-size: 6rem;
-            opacity: 0.08;
-            bottom: 20px;
-            right: 20px;
-            transform: rotate(-15deg);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
         }
 
-        body::after {
-            content: '🌿';
-            position: fixed;
-            font-size: 5rem;
-            opacity: 0.08;
-            top: 20px;
-            left: 20px;
-            transform: rotate(20deg);
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4), rgba(200, 230, 220, 0.2));
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.2);
+            animation: floatBubble linear infinite;
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
+        @keyframes floatBubble {
+            0% {
+                transform: translateY(100vh) scale(0.2) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-20vh) scale(1.2) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .sparkle-particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, #ffd700, #ffb347);
+            border-radius: 50%;
+            animation: sparkleFall linear infinite;
+            box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+        }
+
+        @keyframes sparkleFall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(720deg) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 14px;
+            animation: confettiDrop linear infinite;
+            opacity: 0.9;
+        }
+
+        @keyframes confettiDrop {
+            0% {
+                transform: translateY(-20vh) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            15% {
+                opacity: 1;
+            }
+            85% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(1080deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* === LÁ THƯ === */
         .letter-wrapper {
             max-width: 780px;
             width: 100%;
@@ -60,6 +132,7 @@
             padding: 35px 35px 30px;
             position: relative;
             border: 1px solid rgba(255, 255, 255, 0.5);
+            z-index: 1;
             transition: all 0.3s ease;
         }
 
@@ -84,12 +157,19 @@
             transform: rotate(12deg);
             opacity: 0.85;
             transition: 0.3s;
+            animation: stampPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes stampPulse {
+            0%, 100% { transform: rotate(12deg) scale(1); }
+            50% { transform: rotate(8deg) scale(1.1); }
         }
 
         .letter-stamp:hover {
             transform: rotate(0deg) scale(1.1);
         }
 
+        /* Header */
         .letter-header {
             display: flex;
             flex-wrap: wrap;
@@ -155,6 +235,13 @@
             padding: 0 12px;
             border-radius: 40px;
             line-height: 1.8;
+            animation: iconWiggle 1.5s ease-in-out infinite;
+        }
+
+        @keyframes iconWiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
         }
 
         .greeting-name .sub-info {
@@ -180,6 +267,7 @@
             color: #7a4a3a;
         }
 
+        /* Nội dung thư */
         .letter-body {
             background: rgba(255, 252, 245, 0.65);
             backdrop-filter: blur(4px);
@@ -242,6 +330,12 @@
             border: 1px solid rgba(255, 255, 240, 0.5);
             box-shadow: 0 2px 12px rgba(70, 130, 110, 0.08);
             line-height: 1.6;
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 2px 12px rgba(70, 130, 110, 0.08); }
+            50% { box-shadow: 0 4px 30px rgba(70, 180, 140, 0.25); }
         }
 
         .letter-body .highlight-quote i {
@@ -286,6 +380,12 @@
             padding: 4px 16px;
             border-radius: 60px;
             border: 1px solid rgba(255, 255, 255, 0.5);
+            animation: socBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes socBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
 
         .letter-body .closing-line {
@@ -297,6 +397,7 @@
             padding-right: 10px;
         }
 
+        /* Footer */
         .letter-footer {
             display: flex;
             justify-content: space-between;
@@ -349,6 +450,7 @@
             margin: 0 6px;
         }
 
+        /* Responsive */
         @media (max-width: 640px) {
             .letter-wrapper {
                 padding: 22px 18px 25px;
@@ -428,18 +530,6 @@
                 right: 15px;
                 top: -10px;
             }
-
-            .letter-wrapper::before {
-                top: 5px;
-                left: 5px;
-                right: 5px;
-                bottom: 5px;
-            }
-
-            .letter-body::before {
-                left: 20px;
-                right: 20px;
-            }
         }
 
         @media (max-width: 420px) {
@@ -496,11 +586,82 @@
             opacity: 0.12;
             pointer-events: none;
         }
+
+        /* === NÚT BẬT/TẮT HIỆU ỨNG === */
+        .toggle-effects {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1d5f4a;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toggle-effects:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: scale(1.05);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .toggle-effects i {
+            font-size: 1.1rem;
+        }
     </style>
 </head>
 <body>
+    <!-- === HIỆU ỨNG SINH NHẬT === -->
+    <div class="birthday-effects" id="birthdayEffects">
+        <!-- Bong bóng xanh pastel -->
+        <div class="bubble" style="width: 30px; height: 30px; left: 5%; animation-duration: 18s; animation-delay: 0s;"></div>
+        <div class="bubble" style="width: 50px; height: 50px; left: 15%; animation-duration: 22s; animation-delay: 3s;"></div>
+        <div class="bubble" style="width: 20px; height: 20px; left: 25%; animation-duration: 15s; animation-delay: 6s;"></div>
+        <div class="bubble" style="width: 40px; height: 40px; left: 35%; animation-duration: 20s; animation-delay: 2s;"></div>
+        <div class="bubble" style="width: 25px; height: 25px; left: 45%; animation-duration: 17s; animation-delay: 8s;"></div>
+        <div class="bubble" style="width: 55px; height: 55px; left: 55%; animation-duration: 24s; animation-delay: 4s;"></div>
+        <div class="bubble" style="width: 35px; height: 35px; left: 65%; animation-duration: 19s; animation-delay: 1s;"></div>
+        <div class="bubble" style="width: 45px; height: 45px; left: 75%; animation-duration: 21s; animation-delay: 7s;"></div>
+        <div class="bubble" style="width: 28px; height: 28px; left: 85%; animation-duration: 16s; animation-delay: 5s;"></div>
+        <div class="bubble" style="width: 38px; height: 38px; left: 92%; animation-duration: 23s; animation-delay: 9s;"></div>
+
+        <!-- Sparkle vàng -->
+        <div class="sparkle-particle" style="left: 8%; animation-duration: 12s; animation-delay: 0s; width: 5px; height: 5px;"></div>
+        <div class="sparkle-particle" style="left: 20%; animation-duration: 14s; animation-delay: 2s; width: 7px; height: 7px;"></div>
+        <div class="sparkle-particle" style="left: 32%; animation-duration: 11s; animation-delay: 4s; width: 4px; height: 4px;"></div>
+        <div class="sparkle-particle" style="left: 48%; animation-duration: 15s; animation-delay: 1s; width: 8px; height: 8px;"></div>
+        <div class="sparkle-particle" style="left: 60%; animation-duration: 13s; animation-delay: 6s; width: 5px; height: 5px;"></div>
+        <div class="sparkle-particle" style="left: 72%; animation-duration: 16s; animation-delay: 3s; width: 6px; height: 6px;"></div>
+        <div class="sparkle-particle" style="left: 85%; animation-duration: 12s; animation-delay: 7s; width: 7px; height: 7px;"></div>
+        <div class="sparkle-particle" style="left: 95%; animation-duration: 14s; animation-delay: 5s; width: 4px; height: 4px;"></div>
+
+        <!-- Confetti nhiều màu -->
+        <div class="confetti-piece" style="left: 3%; background: #ffb3b3; animation-duration: 10s; animation-delay: 0s; border-radius: 2px;"></div>
+        <div class="confetti-piece" style="left: 12%; background: #b3d9ff; animation-duration: 12s; animation-delay: 3s; border-radius: 50%;"></div>
+        <div class="confetti-piece" style="left: 22%; background: #b3ffb3; animation-duration: 11s; animation-delay: 5s; border-radius: 2px;"></div>
+        <div class="confetti-piece" style="left: 33%; background: #ffccb3; animation-duration: 13s; animation-delay: 1s; border-radius: 50%;"></div>
+        <div class="confetti-piece" style="left: 44%; background: #e6b3ff; animation-duration: 9s; animation-delay: 6s; border-radius: 2px;"></div>
+        <div class="confetti-piece" style="left: 55%; background: #ffffb3; animation-duration: 14s; animation-delay: 2s; border-radius: 50%;"></div>
+        <div class="confetti-piece" style="left: 66%; background: #b3ffff; animation-duration: 11s; animation-delay: 7s; border-radius: 2px;"></div>
+        <div class="confetti-piece" style="left: 77%; background: #ffb3e6; animation-duration: 12s; animation-delay: 4s; border-radius: 50%;"></div>
+        <div class="confetti-piece" style="left: 88%; background: #b3ffcc; animation-duration: 10s; animation-delay: 8s; border-radius: 2px;"></div>
+        <div class="confetti-piece" style="left: 97%; background: #ffb380; animation-duration: 13s; animation-delay: 3s; border-radius: 50%;"></div>
+    </div>
+
+    <!-- === LÁ THƯ === -->
     <div class="letter-wrapper">
-        <div class="letter-stamp">🌸</div>
+        <div class="letter-stamp">🎂</div>
         <span class="deco-flower" style="top: 15px; left: 20px;">🌿</span>
         <span class="deco-flower" style="bottom: 15px; right: 20px;">🌱</span>
 
@@ -527,7 +688,7 @@
             </p>
 
             <p>
-                Hôm nay là 12/7, ngày sinh nhật của cậu. Chúc mừng cậu đã bước sang tuổi 17 nhé.
+                Chào cậu, hôm nay là 12/7 rồi — sinh nhật của cậu đấy. Chúc mừng cậu nhé!
             </p>
 
             <div class="highlight-quote">
@@ -539,15 +700,16 @@
             <div class="message-core">
                 <p style="margin-bottom: 0;">
                     <i class="fas fa-heart" style="color: #c07a8a; margin-right: 8px;"></i>
-                    Đoan à, cậu là một cô gái đặc biệt, và mình mong cậu luôn giữ được sự tự tin 
-                    và nụ cười của riêng mình. Tuổi 17 là lúc để bắt đầu nhiều điều mới mẻ, 
-                    hãy cứ sống theo cách cậu muốn và làm những điều cậu thích.
+                    Tụi mình quen biết nhau qua mạng cũng được một thời gian rồi nhỉ. Tuy chưa một lần gặp mặt ngoài đời, nhưng mình thực sự trân trọng những cuộc trò chuyện và sự kết nối mà tụi mình có. Cậu là một người bạn thú vị và đáng mến.
                 </p>
             </div>
 
             <p>
-                Chúc cậu một sinh nhật vui vẻ, bên gia đình và những người cậu yêu quý. 
-                Mong cậu luôn khỏe mạnh, học tập tốt và có thật nhiều kỷ niệm đẹp trong năm mới này.
+                Mình mong cậu luôn giữ được sự tươi vui và lạc quan như những gì cậu vẫn thể hiện. Tuổi 17 là khoảng thời gian đẹp để khám phá bản thân và làm những điều cậu thích. Hãy cứ sống theo cách cậu muốn, đừng để ai làm cậu phải thay đổi.
+            </p>
+
+            <p>
+                Chúc cậu có một ngày sinh nhật thật vui vẻ bên gia đình và bạn bè. Chúc cậu luôn khỏe mạnh, học tốt và có thêm thật nhiều kỷ niệm đẹp. Và dù tụi mình có ở xa nhau, mình vẫn luôn ủng hộ và mong những điều tốt đẹp nhất sẽ đến với cậu.
             </p>
 
             <div class="soc-collection">
@@ -560,13 +722,12 @@
 
             <p style="text-align: center; font-size: 0.95rem; color: #1d5d48; background: rgba(220, 240, 230, 0.3); padding: 6px 12px; border-radius: 40px; display: inline-block; width: auto; margin: 0 auto 10px;">
                 <i class="fas fa-heart" style="color: #c07a8a;"></i> 
-                Sóc nhỏ gửi lời chúc đến cậu 
+                Sóc nhỏ gửi lời chúc sinh nhật đến cậu 
                 <i class="fas fa-heart" style="color: #c07a8a;"></i>
             </p>
 
             <p style="margin-top: 16px;">
-                Cảm ơn cậu vì đã là một người bạn/người thân tuyệt vời. Mình trân trọng 
-                những khoảnh khắc đã có với cậu. Mong tất cả những điều tốt đẹp sẽ đến với cậu.
+                Mình không biết tương lai sẽ thế nào, nhưng mình hy vọng tụi mình sẽ tiếp tục giữ liên lạc và chia sẻ những câu chuyện vui trong cuộc sống. Cảm ơn cậu vì đã là một người bạn đáng yêu.
             </p>
 
             <p class="closing-line">
@@ -575,7 +736,7 @@
         </div>
 
         <div class="letter-footer">
-            <span class="signature"><i class="fas fa-pen-fancy"></i> Một người bạn</span>
+            <span class="signature"><i class="fas fa-pen-fancy"></i> schoo2k3</span>
             <span class="date-badge"><i class="far fa-calendar-alt"></i> 12.07.2026</span>
         </div>
 
@@ -586,13 +747,19 @@
         </div>
     </div>
 
+    <!-- Nút bật/tắt hiệu ứng -->
+    <button class="toggle-effects" id="toggleEffects">
+        <i class="fas fa-gift"></i> Hiệu ứng sinh nhật
+    </button>
+
     <script>
         (function() {
+            // Tương tác với sóc
             const socEmoji = document.querySelector('.soc-emoji');
             const socIcons = document.querySelectorAll('.soc-icon');
             
             const showLove = () => {
-                alert('🐿️ Chúc Phúc Đoan sinh nhật vui vẻ! Hãy luôn tươi cười và sống thật vui nhé! 🌸');
+                alert('🐿️ Chúc Phúc Đoan sinh nhật vui vẻ! Chúc cậu luôn tươi cười và hạnh phúc nhé! 🎂');
             };
 
             if (socEmoji) {
@@ -605,6 +772,7 @@
                 icon.style.cursor = 'pointer';
             });
 
+            // Click vào avatar
             const avatar = document.querySelector('.avatar-frame');
             if (avatar) {
                 avatar.addEventListener('click', function() {
@@ -619,7 +787,24 @@
                 });
             }
 
-            console.log('🌸 Lá thư viết tay dành tặng Phúc Đoan 🌸');
+            // Bật/tắt hiệu ứng sinh nhật
+            const toggleBtn = document.getElementById('toggleEffects');
+            const effectsContainer = document.getElementById('birthdayEffects');
+            let effectsVisible = true;
+
+            toggleBtn.addEventListener('click', function() {
+                if (effectsVisible) {
+                    effectsContainer.style.display = 'none';
+                    this.innerHTML = '<i class="fas fa-gift"></i> Bật hiệu ứng';
+                    effectsVisible = false;
+                } else {
+                    effectsContainer.style.display = 'block';
+                    this.innerHTML = '<i class="fas fa-gift"></i> Hiệu ứng sinh nhật';
+                    effectsVisible = true;
+                }
+            });
+
+            console.log('🌸 Lá thư sinh nhật dành tặng Phúc Đoan từ schoo2k3 🌸');
         })();
     </script>
 </body>
