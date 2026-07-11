@@ -2,773 +2,661 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>🎂 Chúc mừng sinh nhật Phúc Đoan 🎂</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌸 Lá thư sinh nhật Phúc Đoan 🌸</title>
+    <!-- Font chữ & icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600&family=Patrick+Hand&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Quicksand', sans-serif;
             min-height: 100vh;
-            background: linear-gradient(135deg, #0a0505 0%, #1a0a0a 30%, #2d1515 60%, #1a0a0a 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #d4ece4 0%, #b5d9cf 50%, #a3cec1 100%);
+            font-family: 'Quicksand', sans-serif;
+            padding: 25px;
+            position: relative;
+        }
+
+        /* Hiệu ứng nền nhẹ */
+        body::before {
+            content: '🌸';
+            position: fixed;
+            font-size: 6rem;
+            opacity: 0.08;
+            bottom: 20px;
+            right: 20px;
+            transform: rotate(-15deg);
+        }
+
+        body::after {
+            content: '🌿';
+            position: fixed;
+            font-size: 5rem;
+            opacity: 0.08;
+            top: 20px;
+            left: 20px;
+            transform: rotate(20deg);
+        }
+
+        /* Bì thư - phong cách viết tay */
+        .letter-wrapper {
+            max-width: 780px;
+            width: 100%;
+            background: #e8f6f1;
+            background-image: 
+                repeating-linear-gradient(transparent, transparent 30px, rgba(180, 210, 195, 0.15) 30px, rgba(180, 210, 195, 0.15) 31px),
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.4) 0%, transparent 50%);
+            border-radius: 30px 30px 30px 30px;
+            box-shadow: 
+                0 25px 50px rgba(60, 100, 85, 0.25),
+                0 8px 20px rgba(0, 0, 0, 0.08),
+                inset 0 2px 4px rgba(255, 255, 255, 0.6);
+            padding: 35px 35px 30px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        /* Đường viền thư cũ */
+        .letter-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 2px dashed rgba(130, 180, 160, 0.25);
+            border-radius: 24px;
+            pointer-events: none;
+        }
+
+        /* Tem thư */
+        .letter-stamp {
+            position: absolute;
+            top: -12px;
+            right: 30px;
+            font-size: 3.2rem;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+            transform: rotate(12deg);
+            opacity: 0.85;
+            transition: 0.3s;
+        }
+
+        .letter-stamp:hover {
+            transform: rotate(0deg) scale(1.1);
+        }
+
+        /* Header - ảnh đại diện + tên */
+        .letter-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 22px;
+            margin-bottom: 28px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(6px);
+            border-radius: 80px 80px 80px 80px;
+            padding: 12px 30px 12px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 0 4px 12px rgba(80, 130, 110, 0.1);
+        }
+
+        .avatar-frame {
+            flex-shrink: 0;
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #b8d9d0, #8fc0b3);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 12px;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* Nền hoạt hình - responsive */
-        .bg-decor {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 0; overflow: hidden;
-        }
-        .bg-decor span {
-            position: absolute; display: block;
-            font-size: 2rem; opacity: 0.1;
-            animation: floatBg 25s infinite alternate ease-in-out;
-        }
-        .bg-decor span:nth-child(1) { top: 5%; left: 3%; animation-duration: 28s; font-size: 3rem; }
-        .bg-decor span:nth-child(2) { top: 10%; right: 5%; animation-duration: 22s; font-size: 2.8rem; }
-        .bg-decor span:nth-child(3) { bottom: 12%; left: 4%; animation-duration: 30s; font-size: 3.5rem; }
-        .bg-decor span:nth-child(4) { bottom: 6%; right: 3%; animation-duration: 24s; font-size: 3rem; }
-        .bg-decor span:nth-child(5) { top: 40%; left: 1%; animation-duration: 26s; font-size: 2.5rem; }
-        .bg-decor span:nth-child(6) { top: 50%; right: 1%; animation-duration: 29s; font-size: 3rem; }
-        .bg-decor span:nth-child(7) { top: 2%; left: 45%; animation-duration: 27s; font-size: 2.4rem; }
-        .bg-decor span:nth-child(8) { bottom: 2%; left: 45%; animation-duration: 23s; font-size: 3.2rem; }
-        .bg-decor span:nth-child(9) { top: 25%; left: 20%; animation-duration: 31s; font-size: 2.2rem; }
-        .bg-decor span:nth-child(10) { top: 70%; right: 20%; animation-duration: 21s; font-size: 2.4rem; }
-
-        @keyframes floatBg {
-            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-            25% { transform: translate(20px, -30px) rotate(10deg) scale(1.05); }
-            50% { transform: translate(-20px, 25px) rotate(-8deg) scale(0.95); }
-            75% { transform: translate(25px, 20px) rotate(8deg) scale(1.05); }
-            100% { transform: translate(-15px, -25px) rotate(-5deg) scale(1); }
-        }
-
-        /* Card chính */
-        .card {
-            position: relative; z-index: 10;
-            max-width: 920px; width: 100%;
-            background: rgba(255, 245, 235, 0.92);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-radius: 60px 60px 40px 40px;
-            padding: 28px 20px 32px;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.7), 0 0 0 2px rgba(255, 215, 150, 0.2);
-            border: 1px solid rgba(255, 215, 175, 0.2);
-            text-align: center;
-            animation: cardIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        @keyframes cardIn {
-            0% { opacity: 0; transform: scale(0.9) rotate(-3deg); }
-            100% { opacity: 1; transform: scale(1) rotate(0deg); }
-        }
-
-        /* Header - responsive */
-        .soc-header {
-            display: flex; justify-content: center; align-items: center;
-            gap: 10px; margin-bottom: 6px; flex-wrap: wrap;
-        }
-        .soc-header .soc-icon {
-            font-size: 2.8rem;
-            filter: drop-shadow(0 8px 20px rgba(200, 100, 30, 0.3));
-            animation: bounceSoc 2.8s infinite ease-in-out;
-            display: inline-block;
-        }
-        @keyframes bounceSoc {
-            0%, 100% { transform: translateY(0) rotate(-3deg); }
-            50% { transform: translateY(-15px) rotate(5deg); }
-        }
-        .soc-header h1 {
-            font-size: 1.6rem; font-weight: 700;
-            background: linear-gradient(135deg, #f7974a, #d45d2a, #f7974a);
-            background-size: 300% 300%;
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientMove 4s ease-in-out infinite;
-            letter-spacing: 1px;
-        }
-        @keyframes gradientMove {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        /* Tên + ngày - responsive */
-        .name-date { margin: 4px 0 6px; }
-        .name-date h2 {
-            font-size: 2.2rem; font-weight: 700;
-            background: linear-gradient(145deg, #e8893a, #b85420, #e8893a);
-            background-size: 200% 200%;
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientMove 3s ease-in-out infinite;
-            display: inline-block; padding: 0 16px;
-            border-radius: 40px; background-color: rgba(255, 215, 170, 0.12);
-            letter-spacing: 2px;
-        }
-        .date-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #f7dac9, #fce4d4);
-            padding: 4px 20px; border-radius: 40px; margin-top: 4px;
-            font-weight: 700; font-size: 1.1rem;
-            color: #7a3f1f;
-            box-shadow: inset 0 -2px 0 #dbb094, 0 4px 15px rgba(200, 100, 30, 0.15);
-            border: 1px solid #efc9b0;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-        }
-        .date-badge i { margin: 0 8px; color: #d45d2a; }
-
-        /* === CAROUSEL 3D - RESPONSIVE === */
-        .carousel-3d-container {
-            margin: 16px auto 14px;
-            width: 100%;
-            max-width: 500px;
-            height: 230px;
-            position: relative;
-            perspective: 1000px;
-            display: flex; justify-content: center; align-items: center;
-        }
-        .carousel-3d {
-            width: 200px; height: 185px;
-            position: relative;
-            transform-style: preserve-3d;
-            animation: rotateCarousel 30s infinite linear;
-        }
-        .carousel-3d:hover { animation-play-state: paused; }
-        @keyframes rotateCarousel {
-            0% { transform: rotateY(0deg); }
-            100% { transform: rotateY(360deg); }
-        }
-        .carousel-item {
-            position: absolute;
-            width: 150px; height: 150px;
-            border-radius: 50%;
+            box-shadow: 0 6px 16px rgba(60, 110, 90, 0.25);
+            border: 4px solid #f5fcf9;
             overflow: hidden;
-            border: 4px solid rgba(255, 215, 175, 0.8);
-            box-shadow: 0 10px 35px rgba(200, 100, 30, 0.3), 0 0 0 3px rgba(255, 215, 175, 0.15);
-            background: linear-gradient(135deg, #ffeede, #ffdcc4);
-            display: flex; align-items: center; justify-content: center;
-            backface-visibility: hidden;
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
-            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
         }
-        .carousel-item img {
-            width: 100%; height: 100%;
+
+        .avatar-frame:hover {
+            transform: scale(1.03) rotate(-3deg);
+            box-shadow: 0 8px 24px rgba(60, 110, 90, 0.35);
+        }
+
+        .avatar-frame img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-        }
-        .carousel-item .placeholder-icon {
-            font-size: 4rem; opacity: 0.6;
-        }
-        .carousel-item:hover {
-            transform: scale(1.12) !important;
-            box-shadow: 0 20px 50px rgba(200, 100, 30, 0.5), 0 0 0 4px #ffd700;
-            z-index: 100;
+            display: block;
         }
 
-        /* Lời chúc - responsive */
-        .message-box {
-            background: linear-gradient(135deg, rgba(255, 235, 215, 0.7), rgba(255, 220, 190, 0.5));
-            border-radius: 50px 15px 50px 15px;
-            padding: 16px 18px; margin: 12px 0 10px;
-            border: 2px dashed #dbaa82;
-            box-shadow: 0 4px 0 #cd9a72;
+        .avatar-frame .avatar-fallback {
+            font-size: 3.8rem;
+            color: #1f5e49;
+            opacity: 0.8;
         }
-        .message-box p {
-            font-size: 0.95rem; font-weight: 600;
-            color: #402b1b; line-height: 1.7;
-            margin-bottom: 8px;
+
+        .greeting-name {
+            flex: 1;
+            min-width: 150px;
         }
-        .message-box .soc-emoji {
-            font-size: 2rem; display: inline-block; margin: 0 3px;
-        }
-        .message-box .highlight {
-            color: #d45d2a;
+
+        .greeting-name h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
             font-weight: 700;
+            color: #1a4d3e;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .soc-fact {
-            background: linear-gradient(135deg, #fff3e6, #ffecd9);
-            border-radius: 40px 8px 40px 8px;
-            padding: 6px 14px; display: inline-block;
-            font-weight: 700; color: #643a1f;
-            border: 1px solid #eccbb4;
-            font-size: 0.85rem;
-            box-shadow: 0 3px 0 #dbb294;
+        .greeting-name h2 .birthday-icon {
+            font-size: 1.6rem;
+            background: rgba(255, 255, 240, 0.7);
+            padding: 0 12px;
+            border-radius: 40px;
+            line-height: 1.8;
+        }
+
+        .greeting-name .sub-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
             margin-top: 4px;
         }
-        .soc-fact i { color: #d45d2a; margin-right: 8px; }
 
-        /* Sóc + bánh - responsive */
-        .soc-cake-row {
-            display: flex; justify-content: center; align-items: center;
-            gap: 4px; flex-wrap: wrap; margin: 8px 0 4px;
-        }
-        .soc-big {
-            font-size: 4.5rem; margin: 0 2px;
-            filter: drop-shadow(0 12px 25px rgba(200, 100, 30, 0.3));
-            animation: wiggle 4s infinite alternate ease-in-out;
-            display: inline-block;
-        }
-        @keyframes wiggle {
-            0% { transform: rotate(-6deg) scale(1); }
-            100% { transform: rotate(6deg) scale(1.05); }
-        }
-        .cake-area {
-            display: flex; justify-content: center; align-items: center;
-            gap: 12px; flex-wrap: wrap;
-        }
-        .cake {
-            font-size: 3.2rem;
-            filter: drop-shadow(0 8px 20px rgba(200, 100, 30, 0.2));
-            animation: floatCake 3.5s infinite alternate ease-in-out;
-        }
-        @keyframes floatCake {
-            0% { transform: translateY(0px) rotate(-3deg); }
-            100% { transform: translateY(-10px) rotate(3deg); }
-        }
-        .candle {
-            font-size: 2.5rem; display: inline-block;
-            animation: flicker 2s infinite alternate;
-        }
-        @keyframes flicker {
-            0% { opacity: 0.8; transform: scale(1) rotate(-4deg); }
-            100% { opacity: 1; transform: scale(1.1) rotate(4deg); }
+        .greeting-name .sub-info span {
+            background: rgba(180, 215, 200, 0.5);
+            padding: 3px 18px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1d5f4a;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
-        /* Nút tương tác - responsive */
-        .interact-area {
-            margin: 14px 0 8px;
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+        .greeting-name .sub-info .age-badge {
+            background: rgba(255, 215, 190, 0.6);
+            color: #7a4a3a;
         }
-        .btn-soc {
-            background: linear-gradient(135deg, #f5d0b4, #eac2a6);
-            border: none; padding: 10px 18px; border-radius: 60px;
-            font-weight: 700; font-size: 0.9rem; color: #3d281b;
-            box-shadow: 0 6px 0 #ad7b5a, 0 4px 20px rgba(200, 100, 30, 0.2);
-            transition: all 0.1s; cursor: pointer;
-            display: inline-flex; align-items: center; gap: 8px;
-            border: 1px solid #f5d5ba;
-            font-family: 'Quicksand', sans-serif;
-            position: relative; overflow: hidden;
-            flex: 1 1 auto;
-            min-width: 80px;
-            justify-content: center;
+
+        /* Nội dung thư - style viết tay */
+        .letter-body {
+            background: rgba(255, 252, 245, 0.65);
+            backdrop-filter: blur(4px);
+            border-radius: 28px;
+            padding: 32px 32px 24px;
+            margin: 10px 0 22px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: inset 0 2px 12px rgba(0, 30, 20, 0.04);
+            position: relative;
         }
-        .btn-soc i { font-size: 1.3rem; }
-        .btn-soc:active {
-            transform: translateY(4px);
-            box-shadow: 0 2px 0 #ad7b5a;
-        }
-        .btn-soc:hover {
-            background: linear-gradient(135deg, #fadcc4, #f0c8ae);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 0 #ad7b5a, 0 6px 25px rgba(200, 100, 30, 0.3);
-        }
-        .btn-soc .ripple {
-            position: absolute; border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            transform: scale(0);
-            animation: rippleAnim 0.8s ease-out forwards;
+
+        /* Đường kẻ giấy viết tay */
+        .letter-body::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            right: 40px;
+            bottom: 30px;
+            background: repeating-linear-gradient(
+                transparent,
+                transparent 28px,
+                rgba(160, 190, 175, 0.15) 28px,
+                rgba(160, 190, 175, 0.15) 29px
+            );
             pointer-events: none;
-        }
-        @keyframes rippleAnim {
-            to { transform: scale(6); opacity: 0; }
+            border-radius: 8px;
         }
 
-        /* Footer - responsive */
-        .footer-note {
-            margin-top: 16px; font-weight: 600; color: #75533b;
-            font-size: 0.85rem; border-top: 2px dotted #e8c2a8;
-            padding-top: 14px;
-            display: flex; justify-content: center; align-items: center;
-            gap: 10px; flex-wrap: wrap;
+        .letter-body p {
+            font-family: 'Patrick Hand', 'Quicksand', cursive;
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #1d4d3b;
+            font-weight: 500;
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.3px;
         }
 
-        /* Hiệu ứng thả */
-        .soc-rain {
-            position: fixed; pointer-events: none;
-            font-size: 2.8rem; z-index: 999;
-            animation: socFall 2.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-        }
-        @keyframes socFall {
-            0% { opacity: 1; transform: translateY(-50px) rotate(0deg) scale(0.2); }
-            100% { opacity: 0; transform: translateY(110vh) rotate(720deg) scale(1.5); }
+        .letter-body .greeting-line {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1f604a;
+            margin-bottom: 12px;
         }
 
-        .confetti {
-            position: fixed; pointer-events: none;
-            font-size: 1.8rem; z-index: 999;
-            animation: confettiFall 3s linear forwards;
-        }
-        @keyframes confettiFall {
-            0% { opacity: 1; transform: translateY(-20px) rotate(0deg) scale(0.3); }
-            100% { opacity: 0; transform: translateY(110vh) rotate(720deg) scale(1.2); }
-        }
-
-        .heart-float {
-            position: fixed; pointer-events: none;
-            font-size: 2.2rem; z-index: 999;
-            animation: heartFloat 4s ease-out forwards;
-        }
-        @keyframes heartFloat {
-            0% { opacity: 1; transform: translateY(0) scale(0.1) rotate(0deg); }
-            40% { opacity: 1; transform: translateY(-40vh) scale(1.3) rotate(180deg); }
-            100% { opacity: 0; transform: translateY(-120vh) scale(0.7) rotate(360deg); }
+        .letter-body .highlight-quote {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #025f45;
+            background: rgba(200, 230, 215, 0.5);
+            padding: 12px 28px;
+            border-radius: 60px 20px 60px 20px;
+            margin: 18px 0 20px;
+            display: inline-block;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255, 255, 240, 0.5);
+            box-shadow: 0 2px 12px rgba(70, 130, 110, 0.08);
+            line-height: 1.6;
         }
 
-        /* === RESPONSIVE CHI TIẾT === */
-        /* Tablet */
-        @media (max-width: 768px) {
-            .card { padding: 24px 18px 28px; border-radius: 50px; }
-            .soc-header h1 { font-size: 1.5rem; }
-            .name-date h2 { font-size: 2rem; }
-            .date-badge { font-size: 1rem; padding: 4px 16px; }
-            .carousel-3d-container { height: 200px; max-width: 420px; }
-            .carousel-3d { width: 170px; height: 155px; }
-            .carousel-item { width: 125px; height: 125px; }
-            .carousel-item .placeholder-icon { font-size: 3.5rem; }
-            .message-box p { font-size: 0.9rem; }
-            .soc-big { font-size: 4rem; }
-            .cake { font-size: 2.8rem; }
-            .candle { font-size: 2.2rem; }
-            .btn-soc { padding: 9px 14px; font-size: 0.85rem; min-width: 70px; }
-            .btn-soc i { font-size: 1.1rem; }
+        .letter-body .highlight-quote i {
+            margin: 0 10px;
+            color: #3c7b67;
+            font-size: 1.1rem;
         }
 
-        /* Mobile Lớn */
-        @media (max-width: 600px) {
-            .card { padding: 20px 14px 24px; border-radius: 40px; }
-            .soc-header .soc-icon { font-size: 2.2rem; }
-            .soc-header h1 { font-size: 1.3rem; }
-            .name-date h2 { font-size: 1.7rem; padding: 0 12px; }
-            .date-badge { font-size: 0.9rem; padding: 3px 14px; }
-            .date-badge i { margin: 0 5px; }
-            
-            .carousel-3d-container { height: 170px; max-width: 340px; margin: 12px auto 10px; }
-            .carousel-3d { width: 140px; height: 125px; }
-            .carousel-item { width: 105px; height: 105px; border-width: 3px; }
-            .carousel-item .placeholder-icon { font-size: 2.8rem; }
-            
-            .message-box { padding: 12px 14px; border-radius: 35px 12px 35px 12px; }
-            .message-box p { font-size: 0.82rem; line-height: 1.6; }
-            .message-box .soc-emoji { font-size: 1.6rem; }
-            .soc-fact { font-size: 0.75rem; padding: 4px 12px; }
-            
-            .soc-big { font-size: 3.2rem; }
-            .cake { font-size: 2.4rem; }
-            .candle { font-size: 1.8rem; }
-            .cake-area { gap: 8px; }
-            
-            .interact-area { gap: 8px; margin: 10px 0 6px; }
-            .btn-soc { padding: 8px 12px; font-size: 0.75rem; min-width: 60px; gap: 6px; }
-            .btn-soc i { font-size: 0.9rem; }
-            
-            .footer-note { font-size: 0.75rem; padding-top: 10px; margin-top: 12px; gap: 6px; }
+        .letter-body .message-core {
+            background: rgba(230, 248, 240, 0.4);
+            padding: 16px 22px;
+            border-radius: 20px;
+            border-left: 4px solid #6ba18b;
+            margin: 16px 0;
+            font-style: italic;
         }
 
-        /* Mobile Nhỏ */
+        .letter-body .soc-collection {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            font-size: 2.2rem;
+            color: #2d6b55;
+            margin: 22px 0 12px;
+            flex-wrap: wrap;
+        }
+
+        .letter-body .soc-collection .soc-icon {
+            transition: 0.3s;
+            cursor: default;
+            filter: drop-shadow(0 4px 8px rgba(50, 80, 60, 0.1));
+        }
+
+        .letter-body .soc-collection .soc-icon:hover {
+            transform: translateY(-5px) scale(1.15);
+            color: #1a4d3a;
+        }
+
+        .letter-body .soc-collection .soc-emoji {
+            font-size: 2.6rem;
+            background: rgba(220, 240, 230, 0.5);
+            padding: 4px 16px;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .letter-body .closing-line {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            text-align: right;
+            margin-top: 20px;
+            color: #1f604a;
+            padding-right: 10px;
+        }
+
+        /* Footer */
+        .letter-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 0 8px;
+            margin-top: 5px;
+        }
+
+        .letter-footer .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1b4e3d;
+            background: rgba(255, 255, 240, 0.6);
+            padding: 2px 24px;
+            border-radius: 60px;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .letter-footer .signature i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        .letter-footer .date-badge {
+            background: rgba(200, 225, 215, 0.7);
+            padding: 6px 24px;
+            border-radius: 60px;
+            font-weight: 600;
+            color: #124b39;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(2px);
+            font-size: 0.95rem;
+        }
+
+        /* Nút tương tác nhỏ */
+        .letter-action {
+            text-align: center;
+            margin-top: 25px;
+            color: #2d6b55;
+            font-weight: 500;
+            opacity: 0.7;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+        }
+
+        .letter-action i {
+            margin: 0 6px;
+        }
+
+        /* Responsive hoàn chỉnh */
+        @media (max-width: 640px) {
+            .letter-wrapper {
+                padding: 22px 18px 25px;
+            }
+
+            .letter-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 20px 15px 16px;
+                border-radius: 50px;
+                gap: 12px;
+            }
+
+            .avatar-frame {
+                width: 100px;
+                height: 100px;
+            }
+
+            .greeting-name h2 {
+                font-size: 1.8rem;
+                justify-content: center;
+            }
+
+            .greeting-name h2 .birthday-icon {
+                font-size: 1.3rem;
+            }
+
+            .greeting-name .sub-info {
+                justify-content: center;
+            }
+
+            .letter-body {
+                padding: 24px 18px 18px;
+            }
+
+            .letter-body p {
+                font-size: 1rem;
+                line-height: 1.8;
+            }
+
+            .letter-body .greeting-line {
+                font-size: 1.3rem;
+            }
+
+            .letter-body .highlight-quote {
+                font-size: 1.1rem;
+                padding: 10px 18px;
+            }
+
+            .letter-body .soc-collection {
+                font-size: 1.8rem;
+                gap: 14px;
+            }
+
+            .letter-body .soc-collection .soc-emoji {
+                font-size: 2rem;
+                padding: 2px 12px;
+            }
+
+            .letter-body .closing-line {
+                font-size: 1.3rem;
+            }
+
+            .letter-footer {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .letter-footer .signature {
+                font-size: 1.3rem;
+            }
+
+            .letter-stamp {
+                font-size: 2.5rem;
+                right: 15px;
+                top: -10px;
+            }
+
+            .letter-wrapper::before {
+                top: 5px;
+                left: 5px;
+                right: 5px;
+                bottom: 5px;
+            }
+
+            .letter-body::before {
+                left: 20px;
+                right: 20px;
+            }
+        }
+
         @media (max-width: 420px) {
-            body { padding: 8px; }
-            .card { padding: 16px 12px 20px; border-radius: 30px; }
-            .soc-header .soc-icon { font-size: 1.8rem; }
-            .soc-header h1 { font-size: 1.1rem; }
-            .name-date h2 { font-size: 1.4rem; padding: 0 8px; }
-            .date-badge { font-size: 0.75rem; padding: 2px 10px; }
-            
-            .carousel-3d-container { height: 140px; max-width: 280px; margin: 10px auto 8px; }
-            .carousel-3d { width: 115px; height: 100px; }
-            .carousel-item { width: 85px; height: 85px; border-width: 3px; }
-            .carousel-item .placeholder-icon { font-size: 2.2rem; }
-            
-            .message-box { padding: 10px 12px; border-radius: 25px 10px 25px 10px; }
-            .message-box p { font-size: 0.7rem; margin-bottom: 4px; }
-            .message-box .soc-emoji { font-size: 1.2rem; }
-            .soc-fact { font-size: 0.65rem; padding: 3px 8px; }
-            
-            .soc-big { font-size: 2.6rem; }
-            .cake { font-size: 2rem; }
-            .candle { font-size: 1.5rem; }
-            .cake-area { gap: 6px; }
-            
-            .interact-area { gap: 6px; }
-            .btn-soc { padding: 6px 10px; font-size: 0.65rem; min-width: 50px; gap: 4px; border-radius: 40px; }
-            .btn-soc i { font-size: 0.8rem; }
-            
-            .footer-note { font-size: 0.65rem; padding-top: 8px; margin-top: 10px; gap: 4px; }
-            
-            .soc-rain { font-size: 2rem; }
-            .confetti { font-size: 1.4rem; }
-            .heart-float { font-size: 1.6rem; }
+            .letter-wrapper {
+                padding: 18px 12px 20px;
+            }
+
+            .avatar-frame {
+                width: 80px;
+                height: 80px;
+            }
+
+            .greeting-name h2 {
+                font-size: 1.5rem;
+            }
+
+            .letter-body p {
+                font-size: 0.95rem;
+            }
+
+            .letter-body .highlight-quote {
+                font-size: 1rem;
+                padding: 8px 14px;
+            }
+
+            .letter-body .soc-collection {
+                font-size: 1.5rem;
+                gap: 10px;
+            }
+
+            .letter-body .soc-collection .soc-emoji {
+                font-size: 1.7rem;
+            }
         }
 
-        /* Cực nhỏ */
-        @media (max-width: 360px) {
-            .carousel-3d-container { height: 120px; max-width: 230px; }
-            .carousel-3d { width: 95px; height: 85px; }
-            .carousel-item { width: 70px; height: 70px; border-width: 2px; }
-            .carousel-item .placeholder-icon { font-size: 1.8rem; }
-            .card { padding: 12px 10px 16px; border-radius: 25px; }
-            .soc-header h1 { font-size: 0.95rem; }
-            .name-date h2 { font-size: 1.2rem; }
-            .date-badge { font-size: 0.65rem; padding: 2px 8px; }
-            .message-box p { font-size: 0.6rem; }
-            .soc-big { font-size: 2.2rem; }
-            .cake { font-size: 1.6rem; }
-            .candle { font-size: 1.2rem; }
-            .btn-soc { font-size: 0.55rem; padding: 5px 8px; min-width: 40px; }
-            .btn-soc i { font-size: 0.7rem; }
-            .footer-note { font-size: 0.55rem; }
+        /* Hiệu ứng nhẹ cho thư */
+        .letter-wrapper {
+            animation: floatIn 0.8s ease-out;
+        }
+
+        @keyframes floatIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.97);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Hoa trang trí nhỏ */
+        .deco-flower {
+            position: absolute;
+            font-size: 1.6rem;
+            opacity: 0.12;
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
-    <!-- Nền trang trí -->
-    <div class="bg-decor">
-        <span>🎂</span><span>🕯️</span><span>🎈</span>
-        <span>🎁</span><span>🎉</span><span>🧁</span>
-        <span>🎂</span><span>🕯️</span><span>🎈</span>
-        <span>🎁</span><span>🎉</span>
-    </div>
+    <div class="letter-wrapper">
+        <!-- Tem thư -->
+        <div class="letter-stamp">🌸</div>
 
-    <!-- Card chính -->
-    <div class="card">
-        <!-- Header -->
-        <div class="soc-header">
-            <span class="soc-icon">🐿️</span>
-            <h1>✨ Chúc mừng sinh nhật ✨</h1>
-            <span class="soc-icon" style="animation-delay:0.6s;">🐿️</span>
-        </div>
+        <!-- Trang trí hoa nhỏ -->
+        <span class="deco-flower" style="top: 15px; left: 20px;">🌿</span>
+        <span class="deco-flower" style="bottom: 15px; right: 20px;">🌱</span>
 
-        <!-- Tên + ngày -->
-        <div class="name-date">
-            <h2>Phúc Đoan</h2>
-            <div class="date-badge">
-                <i class="fas fa-calendar-alt"></i> 12 · 7 · 2009 <i class="fas fa-crown" style="margin-left:6px; color:#f7974a;"></i>
+        <!-- Header: ảnh + tên -->
+        <div class="letter-header">
+            <div class="avatar-frame">
+                <!-- Ảnh đại diện cho Phúc Đoan (có thể thay link) -->
+                <img src="https://ui-avatars.com/api/?name=Phuc+Doan&background=aad3c4&color=154433&size=120&font-size=0.5&bold=true&rounded=true" alt="Phúc Đoan" />
             </div>
-        </div>
-
-        <!-- CAROUSEL 3D ẢNH -->
-        <div class="carousel-3d-container">
-            <div class="carousel-3d" id="carousel3d">
-                <div class="carousel-item" data-index="0" style="transform: rotateY(0deg) translateZ(200px);">
-                    <img src="https://via.placeholder.com/150/ffecd2/fcb69f?text=🌸+Đoan" alt="Đoan 1">
-                </div>
-                <div class="carousel-item" data-index="1" style="transform: rotateY(45deg) translateZ(200px);">
-                    <img src="https://via.placeholder.com/150/a8edea/fed6e3?text=🌺+Đoan" alt="Đoan 2">
-                </div>
-                <div class="carousel-item" data-index="2" style="transform: rotateY(90deg) translateZ(200px);">
-                    <img src="https://via.placeholder.com/150/ffecd2/a8edea?text=🎀+Đoan" alt="Đoan 3">
-                </div>
-                <div class="carousel-item" data-index="3" style="transform: rotateY(135deg) translateZ(200px);">
-                    <img src="https://via.placeholder.com/150/fed6e3/ffecd2?text=💖+Đoan" alt="Đoan 4">
-                </div>
-                <div class="carousel-item" data-index="4" style="transform: rotateY(180deg) translateZ(200px);">
-                    <img src="https://via.placeholder.com/150/fcb69f/a8edea?text=🌟+Đoan" alt="Đoan 5">
-                </div>
-                <div class="carousel-item" data-index="5" style="transform: rotateY(225deg) translateZ(200px);">
-                    <img src="https://via.placeholder.com/150/fed6e3/fcb69f?text=💐+Đoan" alt="Đoan 6">
-                </div>
-                <div class="carousel-item" data-index="6" style="transform: rotateY(270deg) translateZ(200px);">
-                    <img src="https://via.placeholder.com/150/ffecd2/fed6e3?text=🦋+Đoan" alt="Đoan 7">
-                </div>
-                <div class="carousel-item" data-index="7" style="transform: rotateY(315deg) translateZ(200px);">
-                    <img src="https://via.placeholder.com/150/a8edea/fcb69f?text=🌈+Đoan" alt="Đoan 8">
+            <div class="greeting-name">
+                <h2>
+                    Phúc Đoan 
+                    <span class="birthday-icon">🎂</span>
+                </h2>
+                <div class="sub-info">
+                    <span><i class="fas fa-calendar-alt"></i> 12/07/2009</span>
+                    <span class="age-badge"><i class="fas fa-crown"></i> 17 tuổi</span>
                 </div>
             </div>
         </div>
 
-        <!-- LỜI CHÚC DÀI -->
-        <div class="message-box">
+        <!-- Nội dung thư viết tay -->
+        <div class="letter-body">
+            <p class="greeting-line">
+                <i class="fas fa-feather-alt" style="color: #3a7b66; margin-right: 10px;"></i>
+                Gửi Phúc Đoan yêu quý,
+            </p>
+
             <p>
-                <span class="soc-emoji">🐿️</span> 
-                Gửi đến <span class="highlight">Phúc Đoan</span> yêu quý,
+                Hôm nay, ngày 12 tháng 7, là một ngày thật đặc biệt — ngày mà một cô gái tuyệt vời 
+                tên <strong>Phúc Đoan</strong> đã chào đời. Trong không gian xanh mát này, tôi muốn gửi đến cô 
+                những lời chúc chân thành nhất từ trái tim.
+            </p>
+
+            <!-- Trích lời bài hát -->
+            <div class="highlight-quote">
+                <i class="fas fa-music"></i> 
+                “Xin em hãy giữ lấy nụ cười, tỏa sáng rạng ngời” 
+                <i class="fas fa-music"></i>
+            </div>
+
+            <div class="message-core">
+                <p style="margin-bottom: 0; font-style: normal;">
+                    <i class="fas fa-heart" style="color: #c07a8a; margin-right: 8px;"></i>
+                    Đoan à, mong em luôn giữ được nụ cười tươi tắn ấy, bởi nụ cười của em 
+                    là ánh sáng đẹp nhất. Hãy luôn tự tin, mạnh mẽ và rạng rỡ như những 
+                    tia nắng ban mai. Tuổi 17 là khởi đầu cho bao điều kỳ diệu — hãy sống 
+                    hết mình, yêu thương bản thân và theo đuổi những ước mơ em ấp ủ.
+                </p>
+            </div>
+
+            <p>
+                <i class="fas fa-star" style="color: #3e8b72;"></i> 
+                Chúc em một sinh nhật thật ý nghĩa, tràn ngập tiếng cười, hoa và những 
+                điều ngọt ngào nhất. Mong rằng mỗi ngày mới đều mang đến cho em những 
+                niềm vui bất ngờ và những kỷ niệm đẹp.
+            </p>
+
+            <!-- Sóc icon (vì bạn thích sóc) -->
+            <div class="soc-collection">
+                <span class="soc-icon"><i class="fas fa-paw"></i></span>
+                <span class="soc-icon"><i class="fas fa-seedling"></i></span>
                 <span class="soc-emoji">🐿️</span>
-            </p>
-            <p>
-                Nhân ngày sinh nhật <span class="highlight">12/7</span> này, 
-                chúc cậu luôn <span class="highlight">tươi vui như sóc nhỏ</span>, 
-                luôn <span class="highlight">xinh đẹp và rạng rỡ</span> như những đóa hoa. 
-                Tuổi mới đến với thật nhiều <span class="highlight">niềm vui</span>, 
-                <span class="highlight">hạnh phúc</span> và <span class="highlight">thành công</span> trong mọi lĩnh vực.
-            </p>
-            <p>
-                Mong rằng mọi <span class="highlight">ước mơ</span> của cậu sẽ thành hiện thực, 
-                mỗi ngày đều tràn ngập <span class="highlight">tiếng cười</span> và 
-                <span class="highlight">những điều kỳ diệu</span>. 
-                Hãy luôn là chính mình, <span class="highlight">tỏa sáng</span> và 
-                <span class="highlight">hạnh phúc</span> nhé! 
-                <span class="soc-emoji">❤️</span>
-            </p>
-            <div class="soc-fact">
-                <i class="fas fa-seedling"></i> Sóc thích ăn hạt dẻ, và thích cả nụ cười của bạn 🌰
+                <span class="soc-icon"><i class="fas fa-tree"></i></span>
+                <span class="soc-icon"><i class="fas fa-leaf"></i></span>
             </div>
+
+            <p style="text-align: center; font-size: 0.95rem; color: #1d5d48; background: rgba(220, 240, 230, 0.3); padding: 6px 12px; border-radius: 40px; display: inline-block; width: auto; margin: 0 auto 10px;">
+                <i class="fas fa-heart" style="color: #c07a8a;"></i> 
+                Sóc nhỏ gửi tặng em thật nhiều hạnh phúc! 
+                <i class="fas fa-heart" style="color: #c07a8a;"></i>
+            </p>
+
+            <p style="margin-top: 16px;">
+                Cảm ơn em vì đã là một phiên bản đặc biệt và tuyệt vời. Hãy luôn nhớ rằng 
+                em xứng đáng với tất cả những điều tốt đẹp nhất trên đời. 
+            </p>
+
+            <p class="closing-line">
+                Thương và chúc em thật nhiều,
+            </p>
         </div>
 
-        <!-- Sóc + bánh -->
-        <div class="soc-cake-row">
-            <span class="soc-big">🐿️</span>
-            <div class="cake-area">
-                <span class="cake">🎂</span>
-                <span class="candle">🕯️</span>
-                <span class="cake" style="font-size:2.8rem;">🧁</span>
-                <span class="cake" style="font-size:2.4rem;">🎈</span>
-            </div>
-            <span class="soc-big" style="animation-delay: 1.2s;">🐿️</span>
+        <!-- Footer: chữ ký + ngày -->
+        <div class="letter-footer">
+            <span class="signature"><i class="fas fa-pen-fancy"></i> Một người bạn</span>
+            <span class="date-badge"><i class="far fa-calendar-alt"></i> 12.07.2026</span>
         </div>
 
-        <!-- Nút tương tác -->
-        <div class="interact-area">
-            <button class="btn-soc" id="rainSocBtn">
-                <i class="fas fa-paw"></i> Thả sóc
-            </button>
-            <button class="btn-soc" id="wishBtn">
-                <i class="fas fa-heart" style="color: #d44c4c;"></i> Lời chúc
-            </button>
-            <button class="btn-soc" id="confettiBtn">
-                <i class="fas fa-star" style="color: #f7c948;"></i> Pháo
-            </button>
-            <button class="btn-soc" id="heartBtn">
-                <i class="fas fa-heart" style="color: #ff6b6b;"></i> Tim
-            </button>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer-note">
-            <span>🐾</span>
-            <span>Phúc Đoan · 12/7/2009</span>
-            <span>🐾</span>
-            <span style="font-weight:400; opacity:0.5;">#soc_cute</span>
+        <!-- Dòng nhỏ -->
+        <div class="letter-action">
+            <i class="fas fa-chevron-circle-down"></i> 
+            Lá thư này dành riêng cho em — hãy mở ra khi cần một chút yêu thương ✨
+            <i class="fas fa-chevron-circle-down"></i>
         </div>
     </div>
 
+    <!-- JavaScript nhẹ nhàng tương tác -->
     <script>
         (function() {
-            "use strict";
+            // Click vào sóc để hiện lời chúc
+            const socEmoji = document.querySelector('.soc-emoji');
+            const socIcons = document.querySelectorAll('.soc-icon');
+            
+            const showLove = () => {
+                alert('🐿️ Chúc Phúc Đoan sinh nhật thật vui vẻ và hạnh phúc! Hãy luôn tươi cười nhé! 🌸');
+            };
 
-            // === TẠO SAO LẤP LÁNH ===
-            function createSparkles() {
-                for (let i = 0; i < 30; i++) {
-                    const sparkle = document.createElement('div');
-                    sparkle.style.cssText = `
-                        position: fixed;
-                        width: ${2 + Math.random() * 4}px;
-                        height: ${2 + Math.random() * 4}px;
-                        background: ${['#ffd700', '#ff6b6b', '#ff9ff3', '#54a0ff', '#ff9f43', '#ff4757'][Math.floor(Math.random() * 6)]};
-                        border-radius: 50%;
-                        pointer-events: none;
-                        z-index: 1;
-                        left: ${Math.random() * 100}%;
-                        top: ${Math.random() * 100}%;
-                        animation: sparkleAnim ${1.5 + Math.random() * 2}s infinite alternate;
-                        animation-delay: ${Math.random() * 3}s;
-                    `;
-                    document.body.appendChild(sparkle);
-                }
+            if (socEmoji) {
+                socEmoji.addEventListener('click', showLove);
+                socEmoji.style.cursor = 'pointer';
             }
-            createSparkles();
 
-            const styleSparkle = document.createElement('style');
-            styleSparkle.textContent = `
-                @keyframes sparkleAnim {
-                    0% { opacity: 0; transform: scale(0); }
-                    50% { opacity: 1; transform: scale(1.5); }
-                    100% { opacity: 0; transform: scale(0); }
-                }
-            `;
-            document.head.appendChild(styleSparkle);
-
-            // === HIỆU ỨNG RIPPLE ===
-            document.querySelectorAll('.btn-soc').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    const rect = this.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const ripple = document.createElement('span');
-                    ripple.className = 'ripple';
-                    ripple.style.cssText = `
-                        position: absolute; border-radius: 50%;
-                        background: rgba(255,255,255,0.5);
-                        width: 20px; height: 20px;
-                        left: ${x}px; top: ${y}px;
-                        transform: scale(0);
-                        animation: rippleAnim 0.8s ease-out forwards;
-                        pointer-events: none;
-                    `;
-                    this.appendChild(ripple);
-                    setTimeout(() => { ripple.remove(); }, 800);
-                });
+            socIcons.forEach(icon => {
+                icon.addEventListener('click', showLove);
+                icon.style.cursor = 'pointer';
             });
 
-            // === NÚT THẢ SÓC ===
-            const rainBtn = document.getElementById('rainSocBtn');
-            if (rainBtn) {
-                rainBtn.addEventListener('click', function() {
-                    const emojis = ['🐿️', '🌰', '🍂', '🐾', '✨', '🧡', '🌸', '🐿️', '🌰', '🍁', '💫'];
-                    const count = window.innerWidth < 420 ? 12 : window.innerWidth < 600 ? 16 : 25;
-                    for (let i = 0; i < count; i++) {
-                        const el = document.createElement('div');
-                        el.className = 'soc-rain';
-                        el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-                        const size = window.innerWidth < 420 ? 1.8 : window.innerWidth < 600 ? 2.2 : 3;
-                        el.style.cssText = `
-                            position: fixed; pointer-events: none;
-                            font-size: ${size + Math.random() * 1.5}rem;
-                            z-index: 999;
-                            left: ${Math.random() * 95}%;
-                            top: -10%;
-                            animation: socFall ${2 + Math.random() * 2.5}s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-                            animation-delay: ${Math.random() * 0.8}s;
-                        `;
-                        document.body.appendChild(el);
-                        setTimeout(() => { if (el.parentNode) el.remove(); }, 5000);
-                    }
+            // Click vào ảnh đại diện để có hiệu ứng
+            const avatar = document.querySelector('.avatar-frame');
+            if (avatar) {
+                avatar.addEventListener('click', function() {
+                    this.style.transition = '0.15s';
+                    this.style.transform = 'scale(0.92)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1.03) rotate(-2deg)';
+                    }, 150);
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1) rotate(0deg)';
+                    }, 350);
                 });
             }
 
-            // === NÚT LỜI CHÚC ===
-            const wishBtn = document.getElementById('wishBtn');
-            if (wishBtn) {
-                wishBtn.addEventListener('click', function() {
-                    const overlay = document.createElement('div');
-                    overlay.style.cssText = `
-                        position: fixed; top:0; left:0; width:100%; height:100%;
-                        background: rgba(30,15,8,0.7); backdrop-filter: blur(8px);
-                        z-index:9999; display:flex; align-items:center; justify-content:center;
-                        padding:16px; animation:fadeIn 0.3s;
-                    `;
-                    const box = document.createElement('div');
-                    const isMobile = window.innerWidth < 600;
-                    box.style.cssText = `
-                        background: linear-gradient(145deg, #fff5ea, #ffecd9);
-                        padding: ${isMobile ? '25px 20px 30px' : '40px 35px 45px'};
-                        border-radius: ${isMobile ? '40px 20px 40px 20px' : '70px 30px 70px 30px'};
-                        max-width: ${isMobile ? '400px' : '520px'};
-                        width: 100%; max-height: 90vh; overflow-y: auto;
-                        box-shadow:0 40px 80px rgba(30,15,8,0.6), 0 0 0 3px #fadcc8;
-                        text-align:center; border:2px solid #f7c8aa;
-                        animation:popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                    `;
-                    box.innerHTML = `
-                        <div style="font-size:${isMobile ? '3.5rem' : '5rem'}; margin-bottom:8px; animation:bounceSoc 1.8s infinite;">🐿️</div>
-                        <h2 style="font-size:${isMobile ? '1.8rem' : '2.6rem'}; font-weight:700; color:#452e1b; margin:6px 0 10px; background: linear-gradient(135deg, #e8893a, #b85420); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">🎈 Phúc Đoan 🎈</h2>
-                        <div style="background: linear-gradient(135deg, #fee4ce, #ffdcc4); padding:${isMobile ? '14px 16px' : '20px 24px'}; border-radius:40px; border:2px dotted #c99974;">
-                            <p style="font-size:${isMobile ? '0.95rem' : '1.15rem'}; font-weight:600; color:#573d28; line-height:1.8; margin-bottom:8px;">
-                                🌟 Chúc bạn tuổi mới thật nhiều <span style="color:#d45d2a;">niềm vui</span> và <span style="color:#d45d2a;">hạnh phúc</span>! 🌟
-                            </p>
-                            <p style="font-size:${isMobile ? '0.85rem' : '1.05rem'}; font-weight:500; color:#6b442a; line-height:1.7;">
-                                Hãy luôn <span style="color:#d45d2a; font-weight:700;">tỏa sáng</span> như những vì sao, 
-                                luôn <span style="color:#d45d2a; font-weight:700;">xinh đẹp</span> như những đóa hoa, 
-                                và luôn <span style="color:#d45d2a; font-weight:700;">vui vẻ</span> như chú sóc nhỏ đáng yêu!
-                            </p>
-                        </div>
-                        <div style="margin:${isMobile ? '14px 0 12px' : '20px 0 14px'}; font-size:${isMobile ? '2.2rem' : '3rem'}; display:flex; justify-content:center; gap:${isMobile ? '14px' : '22px'}; flex-wrap:wrap;">
-                            <span style="animation: wiggle 2s infinite alternate;">🐿️</span>
-                            <span style="animation: floatCake 2.5s infinite alternate;">🎂</span>
-                            <span style="animation: wiggle 2s infinite alternate-reverse;">🎈</span>
-                        </div>
-                        <button id="closeWishPopup" style="background: linear-gradient(135deg, #d45d2a, #b85420); border:none; padding:${isMobile ? '12px 28px' : '14px 40px'}; border-radius:50px; font-weight:700; font-size:${isMobile ? '0.95rem' : '1.15rem'}; color:#fff; box-shadow:0 6px 0 #7b3f1f; cursor:pointer; border:1px solid #e6b690; transition:all 0.1s;">
-                            <i class="fas fa-heart" style="margin-right:10px;"></i> Cảm ơn cậu!
-                        </button>
-                    `;
-                    overlay.appendChild(box);
-                    document.body.appendChild(overlay);
-
-                    const style2 = document.createElement('style');
-                    style2.textContent = `
-                        @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-                        @keyframes popIn { 0% { transform:scale(0.4); opacity:0; } 100% { transform:scale(1); opacity:1; } }
-                        @keyframes bounceSoc { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-15px); } }
-                        @keyframes wiggle { 0% { transform:rotate(-6deg); } 100% { transform:rotate(6deg); } }
-                        @keyframes floatCake { 0% { transform:translateY(0px) rotate(-3deg); } 100% { transform:translateY(-10px) rotate(3deg); } }
-                    `;
-                    document.head.appendChild(style2);
-
-                    const closeBtn = document.getElementById('closeWishPopup');
-                    if (closeBtn) {
-                        closeBtn.addEventListener('click', () => { if (overlay.parentNode) overlay.remove(); });
-                    }
-                    overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
-                });
-            }
-
-            // === NÚT BẮN PHÁO ===
-            const confettiBtn = document.getElementById('confettiBtn');
-            if (confettiBtn) {
-                confettiBtn.addEventListener('click', function() {
-                    const shapes = ['🎉', '🎊', '⭐', '✨', '🎈', '🎁', '💖', '🌟', '🎂', '🕯️', '🌈', '🌸'];
-                    const count = window.innerWidth < 420 ? 20 : window.innerWidth < 600 ? 30 : 45;
-                    for (let i = 0; i < count; i++) {
-                        const el = document.createElement('div');
-                        el.className = 'confetti';
-                        el.textContent = shapes[Math.floor(Math.random() * shapes.length)];
-                        const size = window.innerWidth < 420 ? 1.2 : window.innerWidth < 600 ? 1.5 : 2;
-                        el.style.cssText = `
-                            position: fixed; pointer-events: none;
-                            font-size: ${size + Math.random() * 1.5}rem;
-                            z-index: 999;
-                            left: ${Math.random() * 95}%;
-                            top: -10%;
-                            animation: confettiFall ${2.5 + Math.random() * 2.5}s linear forwards;
-                            animation-delay: ${Math.random() * 1.2}s;
-                            transform: rotate(${Math.random() * 360}deg);
-                        `;
-                        document.body.appendChild(el);
-                        setTimeout(() => { if (el.parentNode) el.remove(); }, 6000);
-                    }
-                });
-            }
-
-            // === NÚT TRÁI TIM ===
-            const heartBtn = document.getElementById('heartBtn');
-            if (heartBtn) {
-                heartBtn.addEventListener('click', function() {
-                    const hearts = ['❤️', '🧡', '💛', '💚', '💙', '💜', '💗', '💖', '💝'];
-                    const count = window.innerWidth < 420 ? 15 : window.innerWidth < 600 ? 22 : 30;
-                    for (let i = 0; i < count; i++) {
-                        const el = document.createElement('div');
-                        el.className = 'heart-float';
-                        el.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-                        const size = window.innerWidth < 420 ? 1.5 : window.innerWidth < 600 ? 1.8 : 2.2;
-                        el.style.cssText = `
-                            position: fixed; pointer-events: none;
-                            font-size: ${size + Math.random() * 1.5}rem;
-                            z-index: 999;
-                            left: ${Math.random() * 95}%;
-                            bottom: -20px;
-                            animation: heartFloat ${3.5 + Math.random() * 2.5}s ease-out forwards;
-                            animation-delay: ${Math.random() * 1s};
-                        `;
-                        document.body.appendChild(el);
-                        setTimeout(() => { if (el.parentNode) el.remove(); }, 6000);
-                    }
-                });
-            }
-
-            // === TỰ ĐỘNG CHẠY HIỆU ỨNG KHI LOAD ===
-            window.addEventListener('load', function() {
-                setTimeout(() => { if (rainBtn) rainBtn.click(); }, 500);
-                setTimeout(() => { if (confettiBtn) confettiBtn.click(); }, 1300);
-                setTimeout(() => { if (heartBtn) heartBtn.click(); }, 2200);
-                setTimeout(() => { if (rainBtn) rainBtn.click(); }, 3200);
-            });
-
-            // === XỬ LÝ RESIZE ===
-            let resizeTimeout;
-            window.addEventListener('resize', function() {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(() => {
-                    // Cập nhật lại carousel nếu cần
-                }, 300);
-            });
-
+            console.log('🌸 Lá thư viết tay dành tặng Phúc Đoan - chân thật và yêu thương 🌸');
         })();
     </script>
 </body>
