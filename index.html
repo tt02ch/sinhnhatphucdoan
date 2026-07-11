@@ -25,7 +25,6 @@
             position: relative;
         }
 
-        /* Hiệu ứng nền nhẹ */
         body::before {
             content: '🌸';
             position: fixed;
@@ -46,7 +45,6 @@
             transform: rotate(20deg);
         }
 
-        /* Bì thư - phong cách viết tay */
         .letter-wrapper {
             max-width: 780px;
             width: 100%;
@@ -65,7 +63,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Đường viền thư cũ */
         .letter-wrapper::before {
             content: '';
             position: absolute;
@@ -78,7 +75,6 @@
             pointer-events: none;
         }
 
-        /* Tem thư */
         .letter-stamp {
             position: absolute;
             top: -12px;
@@ -94,7 +90,6 @@
             transform: rotate(0deg) scale(1.1);
         }
 
-        /* Header - ảnh đại diện + tên */
         .letter-header {
             display: flex;
             flex-wrap: wrap;
@@ -135,12 +130,6 @@
             height: 100%;
             object-fit: cover;
             display: block;
-        }
-
-        .avatar-frame .avatar-fallback {
-            font-size: 3.8rem;
-            color: #1f5e49;
-            opacity: 0.8;
         }
 
         .greeting-name {
@@ -191,7 +180,6 @@
             color: #7a4a3a;
         }
 
-        /* Nội dung thư - style viết tay */
         .letter-body {
             background: rgba(255, 252, 245, 0.65);
             backdrop-filter: blur(4px);
@@ -203,7 +191,6 @@
             position: relative;
         }
 
-        /* Đường kẻ giấy viết tay */
         .letter-body::before {
             content: '';
             position: absolute;
@@ -269,7 +256,6 @@
             border-radius: 20px;
             border-left: 4px solid #6ba18b;
             margin: 16px 0;
-            font-style: italic;
         }
 
         .letter-body .soc-collection {
@@ -311,7 +297,6 @@
             padding-right: 10px;
         }
 
-        /* Footer */
         .letter-footer {
             display: flex;
             justify-content: space-between;
@@ -350,7 +335,6 @@
             font-size: 0.95rem;
         }
 
-        /* Nút tương tác nhỏ */
         .letter-action {
             text-align: center;
             margin-top: 25px;
@@ -365,7 +349,6 @@
             margin: 0 6px;
         }
 
-        /* Responsive hoàn chỉnh */
         @media (max-width: 640px) {
             .letter-wrapper {
                 padding: 22px 18px 25px;
@@ -492,7 +475,6 @@
             }
         }
 
-        /* Hiệu ứng nhẹ cho thư */
         .letter-wrapper {
             animation: floatIn 0.8s ease-out;
         }
@@ -508,7 +490,6 @@
             }
         }
 
-        /* Hoa trang trí nhỏ */
         .deco-flower {
             position: absolute;
             font-size: 1.6rem;
@@ -519,17 +500,12 @@
 </head>
 <body>
     <div class="letter-wrapper">
-        <!-- Tem thư -->
         <div class="letter-stamp">🌸</div>
-
-        <!-- Trang trí hoa nhỏ -->
         <span class="deco-flower" style="top: 15px; left: 20px;">🌿</span>
         <span class="deco-flower" style="bottom: 15px; right: 20px;">🌱</span>
 
-        <!-- Header: ảnh + tên -->
         <div class="letter-header">
             <div class="avatar-frame">
-                <!-- Ảnh đại diện cho Phúc Đoan (có thể thay link) -->
                 <img src="https://ui-avatars.com/api/?name=Phuc+Doan&background=aad3c4&color=154433&size=120&font-size=0.5&bold=true&rounded=true" alt="Phúc Đoan" />
             </div>
             <div class="greeting-name">
@@ -544,20 +520,16 @@
             </div>
         </div>
 
-        <!-- Nội dung thư viết tay -->
         <div class="letter-body">
             <p class="greeting-line">
                 <i class="fas fa-feather-alt" style="color: #3a7b66; margin-right: 10px;"></i>
-                Gửi Phúc Đoan yêu quý,
+                Gửi Đoan,
             </p>
 
             <p>
-                Hôm nay, ngày 12 tháng 7, là một ngày thật đặc biệt — ngày mà một cô gái tuyệt vời 
-                tên <strong>Phúc Đoan</strong> đã chào đời. Trong không gian xanh mát này, tôi muốn gửi đến cô 
-                những lời chúc chân thành nhất từ trái tim.
+                Hôm nay là 12/7, ngày sinh nhật của cậu. Chúc mừng cậu đã bước sang tuổi 17 nhé.
             </p>
 
-            <!-- Trích lời bài hát -->
             <div class="highlight-quote">
                 <i class="fas fa-music"></i> 
                 “Xin em hãy giữ lấy nụ cười, tỏa sáng rạng ngời” 
@@ -565,23 +537,19 @@
             </div>
 
             <div class="message-core">
-                <p style="margin-bottom: 0; font-style: normal;">
+                <p style="margin-bottom: 0;">
                     <i class="fas fa-heart" style="color: #c07a8a; margin-right: 8px;"></i>
-                    Đoan à, mong em luôn giữ được nụ cười tươi tắn ấy, bởi nụ cười của em 
-                    là ánh sáng đẹp nhất. Hãy luôn tự tin, mạnh mẽ và rạng rỡ như những 
-                    tia nắng ban mai. Tuổi 17 là khởi đầu cho bao điều kỳ diệu — hãy sống 
-                    hết mình, yêu thương bản thân và theo đuổi những ước mơ em ấp ủ.
+                    Đoan à, cậu là một cô gái đặc biệt, và mình mong cậu luôn giữ được sự tự tin 
+                    và nụ cười của riêng mình. Tuổi 17 là lúc để bắt đầu nhiều điều mới mẻ, 
+                    hãy cứ sống theo cách cậu muốn và làm những điều cậu thích.
                 </p>
             </div>
 
             <p>
-                <i class="fas fa-star" style="color: #3e8b72;"></i> 
-                Chúc em một sinh nhật thật ý nghĩa, tràn ngập tiếng cười, hoa và những 
-                điều ngọt ngào nhất. Mong rằng mỗi ngày mới đều mang đến cho em những 
-                niềm vui bất ngờ và những kỷ niệm đẹp.
+                Chúc cậu một sinh nhật vui vẻ, bên gia đình và những người cậu yêu quý. 
+                Mong cậu luôn khỏe mạnh, học tập tốt và có thật nhiều kỷ niệm đẹp trong năm mới này.
             </p>
 
-            <!-- Sóc icon (vì bạn thích sóc) -->
             <div class="soc-collection">
                 <span class="soc-icon"><i class="fas fa-paw"></i></span>
                 <span class="soc-icon"><i class="fas fa-seedling"></i></span>
@@ -592,43 +560,39 @@
 
             <p style="text-align: center; font-size: 0.95rem; color: #1d5d48; background: rgba(220, 240, 230, 0.3); padding: 6px 12px; border-radius: 40px; display: inline-block; width: auto; margin: 0 auto 10px;">
                 <i class="fas fa-heart" style="color: #c07a8a;"></i> 
-                Sóc nhỏ gửi tặng em thật nhiều hạnh phúc! 
+                Sóc nhỏ gửi lời chúc đến cậu 
                 <i class="fas fa-heart" style="color: #c07a8a;"></i>
             </p>
 
             <p style="margin-top: 16px;">
-                Cảm ơn em vì đã là một phiên bản đặc biệt và tuyệt vời. Hãy luôn nhớ rằng 
-                em xứng đáng với tất cả những điều tốt đẹp nhất trên đời. 
+                Cảm ơn cậu vì đã là một người bạn/người thân tuyệt vời. Mình trân trọng 
+                những khoảnh khắc đã có với cậu. Mong tất cả những điều tốt đẹp sẽ đến với cậu.
             </p>
 
             <p class="closing-line">
-                Thương và chúc em thật nhiều,
+                Thân mến,
             </p>
         </div>
 
-        <!-- Footer: chữ ký + ngày -->
         <div class="letter-footer">
             <span class="signature"><i class="fas fa-pen-fancy"></i> Một người bạn</span>
             <span class="date-badge"><i class="far fa-calendar-alt"></i> 12.07.2026</span>
         </div>
 
-        <!-- Dòng nhỏ -->
         <div class="letter-action">
             <i class="fas fa-chevron-circle-down"></i> 
-            Lá thư này dành riêng cho em — hãy mở ra khi cần một chút yêu thương ✨
+            Mở lá thư này khi cần một chút động lực ✨
             <i class="fas fa-chevron-circle-down"></i>
         </div>
     </div>
 
-    <!-- JavaScript nhẹ nhàng tương tác -->
     <script>
         (function() {
-            // Click vào sóc để hiện lời chúc
             const socEmoji = document.querySelector('.soc-emoji');
             const socIcons = document.querySelectorAll('.soc-icon');
             
             const showLove = () => {
-                alert('🐿️ Chúc Phúc Đoan sinh nhật thật vui vẻ và hạnh phúc! Hãy luôn tươi cười nhé! 🌸');
+                alert('🐿️ Chúc Phúc Đoan sinh nhật vui vẻ! Hãy luôn tươi cười và sống thật vui nhé! 🌸');
             };
 
             if (socEmoji) {
@@ -641,7 +605,6 @@
                 icon.style.cursor = 'pointer';
             });
 
-            // Click vào ảnh đại diện để có hiệu ứng
             const avatar = document.querySelector('.avatar-frame');
             if (avatar) {
                 avatar.addEventListener('click', function() {
@@ -656,7 +619,7 @@
                 });
             }
 
-            console.log('🌸 Lá thư viết tay dành tặng Phúc Đoan - chân thật và yêu thương 🌸');
+            console.log('🌸 Lá thư viết tay dành tặng Phúc Đoan 🌸');
         })();
     </script>
 </body>
